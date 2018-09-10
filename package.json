@@ -1,0 +1,23 @@
+{
+  "name": "registration_db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "express-flash": "0.0.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "install": "^0.12.1",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.4",
+    "save": "^2.3.2"
+  }
+}

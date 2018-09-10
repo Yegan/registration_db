@@ -1,0 +1,13 @@
+.container{
+  text-align: center;
+  margin: auto;
+  box-sizing: content-box;
+  
+}
+.displayText ul{
+  padding-left: 1em;
+  background-color: yellow;
+  width: 10%;
+  border-radius: 10%;
+  border: solid black 2px;
+}

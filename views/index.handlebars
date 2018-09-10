@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Registration numbers</title>
+  <link rel="stylesheet" href="/registration_number.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="registration-header">
+      <label for="">Registration Number </label>
+      <div class="registration-textbox">
+
+
+        <input type="text" name="textbox" class="textbox" value="" placeholder="Please Enter A Registartion Number">
+
+        <div class="message alert alert-danger">
+
+        </div>
+      </div>
+    </div>
+    <div class="button">
+      <button type="button" name="button" class="addBtn btn btn-success">ADD</button>
+      <button type="button" name="button" class="resetBtn btn btn-warning">Reset</button>
+    </div>
+    <div class="town_filter">
+      <select class="towns btn btn-primary" name="">
+        <option class="towns" value="All">Show all towns</option>
+        <option class="towns" value="CA ">Cape Town</option>
+        <option class="towns" value="CAW">George</option>
+        <option class="towns" value="CY">Bellville</option>
+        <option class="towns" value="CK">Malmesbury</option>
+        <option class="towns" value="CJ">Paarl</option>
+      </select>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="col-xs-12">
+
+          <div class="well well-sm">
+            <div class="display">
+              <span class="displayText"></span>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+<script type="text/javascript" src="registration_test/registration_number_factory.js"></script>
+<script type="text/javascript" src="registration_dom.js">
+</script>
+
+</html>
