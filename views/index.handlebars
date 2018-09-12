@@ -13,23 +13,27 @@
 
   <div class="container">
     <div class="registration-header">
-     <h1>Registration Number </h1> 
+      <h1>Registration Number </h1>
 
 
-      
-  <div class="row">
+
+      <form action="/reg_number" method="post">   
+      <div class="row">
         <div class="input-group col-xs-6 col-lg-offset-2">
-              <input type="text" class="form-control mr-sm-6" placeholder="Please Enter A Registartion Number" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <input type="text" name="regInput" class="form-control mr-sm-6" placeholder="Please Enter A Registartion Number" aria-label="Recipient's username"  aria-describedby="basic-addon2">
           <div class="input-group-append">
-                 <button class="btn btn-outline-secondary" type="button">Add</button>
-                   <button class="btn btn-sm btn-outline-secondary" type="button">Reset</button>
-         </div>
-</div>
+            <button class="btn btn-outline-secondary" type="submit">Add</button>
+      </form> 
+
+            <button class="btn btn-sm btn-outline-secondary" type="button">Reset</button>
+          </div>
+        </div>
       </div>
     </div>
-   
-    <div class="town_filter">
-      <select class="towns btn btn-primary" name="">
+
+    <div class="row">
+    <div class="col-xs-6">
+      <select class="towns btn" name="">
         <option class="towns" value="All">Show all towns</option>
         <option class="towns" value="CA ">Cape Town</option>
         <option class="towns" value="CAW">George</option>
@@ -38,10 +42,11 @@
         <option class="towns" value="CJ">Paarl</option>
       </select>
     </div>
+  </div>
+  <br>
     <div class="row">
-      <div class="col-sm-12">
-        <div class="col-xs-12">
-
+      <div class="col-sm-8 offset-1">
+        <div class="col-xs-8 offset-1">
           <div class="well well-sm">
             <div class="display">
               <span class="displayText"></span>
@@ -54,11 +59,10 @@
       </div>
     </div>
   </div>
-
+</div>
 
 </body>
 <script type="text/javascript" src="registration_test/registration_number_factory.js"></script>
-<script type="text/javascript" src="registration_dom.js">
 </script>
 
 </html>
