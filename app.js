@@ -4,7 +4,21 @@ const flash = require('express-flash')
 const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-const registrationLogic = require('./registration_number_factory.js')
+const registrationLogic = require('./regfunc.js')
+const regRoutes = require('./routes.js')
+const postgres = require('pg')
+const Pool = postgres.Pool
+
+const connectionString = process.env.DATABASE_URL || 'postgres://coder:pg123@localhost:5432/reg_data'
+
+const pool = new Pool({
+  connectionString
+})
+
+// making an instance for the functional logic and the database
+
+const regDB = registrationLogic(pool)
+const regRoute = regRoutes(regDB)
 
 // Handlebar engine allowing for templating of data
 
@@ -30,16 +44,10 @@ app.use(flash())
 app.use(bodyParser.json())
 
 // This route displays the registration homepage
-app.get('/', function (req, res) {
-  res.render('index')
-})
+app.get('/', regRoute.home)
 
 // This route adds the registration number into the route
-app.post('/reg_number/:regNum', function (req, res) {
-  let regInput = req.body.regInput
-  let regDisplay = registrationLogic(regInput)
-  res.redirect('/', regDisplay)
-})
+app.post('/reg_number', regRoute.regCheckRoute)
 
 let PORT = process.env.PORT || 3020
 

@@ -1,10 +1,10 @@
 'use strict'
 const assert = require('assert')
-const regFunc = require('../regFunc.js')
+const regFunc = require('./regfunc.js')
 const postgres = require('pg')
 const Pool = postgres.Pool
 
-const connectionString = process.env.DATABASE_URL || 'postgres://coder:coder123@localhost:5432/registration_DB'
+const connectionString = process.env.DATABASE_URL || 'postgres://coder:pg123@localhost:5432/reg_data'
 
 const pool = new Pool({
   connectionString
@@ -16,11 +16,28 @@ describe('Registration Web App', function () {
   })
 
   it('The function should add a registration number and the area code of that registration number', async function () {
-    let regFuncIn = regFunc(Pool)
+    let regFuncIn = regFunc(pool)
 
-    let regnum = await regFuncIn.addReg('CA 123-456')
+    await regFuncIn.addReg('CA 123-456')
+    await regFuncIn.addReg('CY 123-987')
+    let display = await regFuncIn.regDisplay()
+    //  looping through a list to get the registration
+    let regList = []
+    let reg = ''
+    for (reg of display) {
+      regList.push({ regcode: reg.regcode })
+    }
 
-    assert.equal(regnum, 'CA 123-456')
-
+    assert.deepEqual(regList, [{
+      regcode: 'CA 123-456'
+    },
+    {
+      regcode: 'CY 123-987'
+    }])
   })
+
+  after(async function () {
+    await pool.end()
+})
+
 })
