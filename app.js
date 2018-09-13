@@ -48,6 +48,7 @@ app.get('/', regRoute.home)
 
 // This route adds the registration number into the route
 app.post('/reg_number', regRoute.regCheckRoute)
+app.post('/location', regRoute.locationAdd)
 
 let PORT = process.env.PORT || 3020
 

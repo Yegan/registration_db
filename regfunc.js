@@ -10,10 +10,13 @@ module.exports = function (pool) {
     return display.rows
   }
 
-  async function addTown () {
+  async function addTown (regCode, area) {
+    await pool.query('insert into towns_table(loca, area) values($1, $2)', [regCode, area])
   }
 
   async function townDisplay () {
+    let displayTable = await pool.query('select loca from towns_table')
+    return displayTable.rows
   }
 
   return {
