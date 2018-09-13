@@ -4,8 +4,11 @@
   box-sizing: content-box;
   
 }
-.displayText ul{
+.displayText{
+  height: 1em;
+  text-align: center;
   padding-left: 1em;
+  padding-right: 1em;
   background-color: yellow;
   width: 10%;
   border-radius: 10%;

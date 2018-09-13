@@ -14,7 +14,7 @@ describe('Registration Web App', function () {
   beforeEach(async function () {
     await pool.query('delete from registration_table')
   })
-
+// Testing the entries of registration numbers into the database table
   it('The function should add a registration number and the area code of that registration number', async function () {
     let regFuncIn = regFunc(pool)
 
@@ -33,6 +33,30 @@ describe('Registration Web App', function () {
     },
     {
       regcode: 'CY 123-987'
+    }])
+  })
+
+  
+
+// Testing the entries of registration codes and towns that match those codes in the database table
+  it('The function should add the registration code along with the matching location i.e CA Cape Town', async function () {
+    let regFuncIn = regFunc(pool)
+
+    await regFuncIn.addTown('')
+    await regFuncIn.addTown('')
+    let townDisplay = await regFuncIn.townDisplay()
+    //  looping through a list to get the registration
+    let regList = []
+    let town = ''
+    for (town of townDisplay) {
+      regList.push({ regcode: town.regcode })
+    }
+
+    assert.deepEqual(regList, [{
+      : ''
+    },
+    {
+      : ''
     }])
   })
 

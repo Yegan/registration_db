@@ -5,4 +5,9 @@ create table registration_table(
     regcode text not null
 );
 
+create table towns_table(
+    loca text not null,
+    area text not null,
+);
+
 -- insert into registration_table(regcode) values ('$1')

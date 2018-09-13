@@ -10,9 +10,17 @@ module.exports = function (pool) {
     return display.rows
   }
 
+  async function addTown () {
+  }
+
+  async function townDisplay () {
+  }
+
   return {
     addReg,
-    regDisplay
+    regDisplay,
+    addTown,
+    townDisplay
 
   }
 }

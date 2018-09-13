@@ -9,8 +9,6 @@ module.exports = function (regFunc) {
       let regInput = req.body.regInput
       await regFunc.addReg(regInput)
       let display = await regFunc.regDisplay()
-
-      console.log(display)
       res.render('index', { display })
     } 
     catch (error) {

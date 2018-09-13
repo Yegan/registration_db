@@ -42,11 +42,18 @@
         <option class="towns" value="CJ">Paarl</option>
       </select>
     </div>
+    <form action="/reg_number" method="post">
+    <button class="btn btn-outline-secondary" type="submit">Add</button>
+   <input type="text" name="townInput" class="form-control mr-sm-6" placeholder="Please Enter A Location" aria-label="Recipient's username"  aria-describedby="basic-addon2">
+   <input type="text" name="townInput" class="form-control mr-sm-6" placeholder="Please Enter A Reg code" aria-label="Recipient's username"  aria-describedby="basic-addon2">
+
+    </form>
+
   </div>
   <br>
     <div class="row">
-      <div class="col-sm-8 offset-1">
-        <div class="col-xs-8 offset-1">
+      <div class="col-sm-12">
+        <div class="col-xs-12">
           <div class="well well-sm">
             <div class="display">
               {{!-- display is the result rendered from regCheckRoute, regcode is the column in the table with the rows --}}
