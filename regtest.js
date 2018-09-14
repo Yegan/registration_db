@@ -42,7 +42,7 @@ describe('Registration Web App', function () {
 
     await regFuncIn.addTown('CA', 'Cape Town')
     await regFuncIn.addTown('CAM', 'Caledon')
-    let townDisplay = await regFuncIn.townDisplay()
+    let townDisplay = await regFuncIn.displayOfTownsTable()
     //  looping through a list to get the registration
     let regList = []
     let town = ''

@@ -19,11 +19,17 @@ module.exports = function (pool) {
     return displayTable.rows
   }
 
+  async function displayOfTownsTable () {
+    let displayTable = await pool.query('select * from towns_table')
+    return displayTable.rows
+  }
+
   return {
     addReg,
     regDisplay,
     addTown,
-    townDisplay
+    townDisplay,
+    displayOfTownsTable
 
   }
 }

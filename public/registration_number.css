@@ -14,3 +14,10 @@
   border-radius: 10%;
   border: solid black 2px;
 }
+.reg{
+  text-transform: uppercase;
+}
+
+.code{
+  text-transform: uppercase;
+}
