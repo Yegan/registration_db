@@ -16,4 +16,4 @@ create table registration_table(
 
 -- insert into registration_table(regcode) values ('$1')
 
-insert into towns_table(loca, area) values('Bellville', 'CY')
+-- insert into towns_table(loca, area) values('Bellville', 'CY')

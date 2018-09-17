@@ -11,21 +11,22 @@ module.exports = function (pool) {
     let display = await pool.query('select * from registration_table')
     return display.rows
   }
-
+  // the addTown function inserts a location and area into the towns table i.e loca = Cape Town area = CA 
   async function addTown (regCode, area) {
     await pool.query('insert into towns_table(loca, area) values($1, $2)', [regCode, area])
   }
 
+  // the townDisplay function retrives all entries in the towns_table
   async function townDisplay () {
     let displayTable = await pool.query('select loca, area from towns_table')
     return displayTable.rows
   }
-
+  // the townDisplay function retrives all entries in the towns_table
   async function displayOfTownsTable () {
     let displayTable = await pool.query('select * from towns_table')
     return displayTable.rows
   }
-
+  // the filterTownByID function filters towns by the id of towns_table and references it in the registration_table i.e ID = 1 loca = Cape Town area = CA || code_id = 1 regcode = CA 123-456
   async function filterTownByID (town) {
     // substring
     let townsCode = await pool.query('select id from towns_table where area =$1', [town])
