@@ -16,13 +16,16 @@ module.exports = function (regFunc) {
   async function regCheckRoute (req, res, next) {
     try {
       let regInput = req.body.regInput
-      await regFunc.addReg(regInput)
-      // let display = await regFunc.regDisplay()
+      let status = await regFunc.addReg(regInput)
+      if (!status.success) {
+        req.flash('message', `Please add a town and a registration code that starts with ${status.startsWith} for that corresponding town`)
+      }
       res.redirect('/')
     } catch (error) {
       next(error.stack)
     }
   }
+
   // This function adds dynamic area codes to the dropdown menu
   async function locationAdd (req, res, next) {
     try {

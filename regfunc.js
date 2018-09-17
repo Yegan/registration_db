@@ -3,7 +3,16 @@ module.exports = function (pool) {
   async function addReg (regNum) {
     let regSubString = regNum.substring(0, 3).trim()
     let townId = await pool.query('select id from towns_table where area =$1', [regSubString])
-    await pool.query('insert into registration_table(regcode, code_id) values ($1, $2)', [regNum, townId.rows[0].id])
+    if (townId.rows.length > 0) {
+      await pool.query('insert into registration_table(regcode, code_id) values ($1, $2)', [regNum, townId.rows[0].id])
+      return {
+        success: true
+      }
+    }  
+    return {
+      success: false,
+      startsWith: regSubString
+    }
   }
 
   // checking the reg table for the insert of the reg num
@@ -11,7 +20,7 @@ module.exports = function (pool) {
     let display = await pool.query('select * from registration_table')
     return display.rows
   }
-  // the addTown function inserts a location and area into the towns table i.e loca = Cape Town area = CA 
+  // the addTown function inserts a location and area into the towns table i.e loca = Cape Town area = CA
   async function addTown (regCode, area) {
     await pool.query('insert into towns_table(loca, area) values($1, $2)', [regCode, area])
   }
@@ -37,13 +46,25 @@ module.exports = function (pool) {
     return regCode
   }
 
+  async function populateDropDown () {
+    let regList = [{
+      townName: 'Cape Town',
+      townTag: 'CA'
+    }]
+
+    for (let reg in regList) {
+      await pool.query('insert into towns_table(loca, area) values($1, $2)', [reg.townName, reg.townTag])
+    }
+  }
+
   return {
     addReg,
     regDisplay,
     addTown,
     townDisplay,
     displayOfTownsTable,
-    filterTownByID
+    filterTownByID,
+    populateDropDown
 
   }
 }

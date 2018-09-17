@@ -5,7 +5,7 @@ const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const registrationLogic = require('./regfunc.js')
-const regRoutes = require('./routes.js')
+const regRoutes = require('./routes/routes.js')
 const postgres = require('pg')
 const Pool = postgres.Pool
 
