@@ -35,8 +35,9 @@
     <div class="col-xs-6">
       <select class="towns btn" name="">
         {{!--  --}}
+         <option class="towns" value="all">All</option>
         {{#each showTown}}
-        <option class="towns">{{loca}}</option>
+        <option class="towns" value="{{area}}">{{loca}}</option>
        {{/each}}
       </select>
     </div>

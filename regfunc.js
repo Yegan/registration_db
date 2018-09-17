@@ -1,7 +1,9 @@
 module.exports = function (pool) {
   // insert reg number into database
-  async function addReg (regnum) {
-    await pool.query('insert into registration_table(regcode) values ($1)', [regnum])
+  async function addReg (regNum) {
+    let regSubString = regNum.substring(0, 3).trim()
+    let townId = await pool.query('select id from towns_table where area =$1', [regSubString])
+    await pool.query('insert into registration_table(regcode, code_id) values ($1, $2)', [regNum, townId.rows[0].id])
   }
 
   // checking the reg table for the insert of the reg num
@@ -15,7 +17,7 @@ module.exports = function (pool) {
   }
 
   async function townDisplay () {
-    let displayTable = await pool.query('select loca from towns_table')
+    let displayTable = await pool.query('select loca, area from towns_table')
     return displayTable.rows
   }
 
@@ -24,12 +26,23 @@ module.exports = function (pool) {
     return displayTable.rows
   }
 
+  async function filterTownByID (town) {
+    // substring
+    let townsCode = await pool.query('select id from towns_table where area =$1', [town])
+
+    // for loop goes here
+    let regCode = await pool.query('select * from registration_table where code_id =$1', [townsCode.rows[0].id])
+
+    return regCode
+  }
+
   return {
     addReg,
     regDisplay,
     addTown,
     townDisplay,
-    displayOfTownsTable
+    displayOfTownsTable,
+    filterTownByID
 
   }
 }

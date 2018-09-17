@@ -29,7 +29,6 @@ module.exports = function (regFunc) {
       let townInput = req.body.location
       let locationCode = req.body.townInput2
       await regFunc.addTown(townInput, locationCode)
-      // let showTown = await regFunc.townDisplay()
 
       res.redirect('/')
     } catch (error) {
