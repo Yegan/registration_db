@@ -1,14 +1,14 @@
 language: node_js
 
 env:
-  - DATABASE_URL=postgresql://postgres@localhost:5432/greetings
+  - DATABASE_URL=postgresql://postgres@localhost:5432/reg_data
 
 node_js:  
   - "8.11.4"
 
 before_script:
-  - psql -c 'create database  greetings;' -U postgres
-  - psql -U postgres -d greetings -a -f greetingsTable.sql
+  - psql -c 'create database  reg_data;' -U postgres
+  - psql -U postgres -d reg_data -a -f registration-db.sql
 
 addons:
     apt:
