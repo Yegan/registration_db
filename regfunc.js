@@ -42,8 +42,8 @@ module.exports = function (pool) {
 
     // for loop goes here
     let regCode = await pool.query('select * from registration_table where code_id =$1', [townsCode.rows[0].id])
-
-    return regCode
+    console.log(regCode.rows)
+    return regCode.rows
   }
 
   async function populateDropDown () {

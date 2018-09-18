@@ -31,9 +31,6 @@ module.exports = function (regFunc) {
     try {
       let townInput = req.body.location
       let locationCode = req.body.townInput2
-
-      console.log('townInput: ' + townInput + ' locationCode: ' + locationCode )
-
       if (townInput === undefined || locationCode === undefined || townInput === '' || locationCode === '') {
         req.flash('error', 'Please fill in a location and a registration code')
       } else {
@@ -44,9 +41,28 @@ module.exports = function (regFunc) {
       next(error.stack)
     }
   }
+  // filters all the registration numbers according the location/area selected from the dropdown menu
+  async function filterReg(req, res, next) {
+    try {
+      let locationInput = req.params.tag
+
+      if (locationInput === 'all') {
+        res.redirect('/')
+      } else {
+        let display = await regFunc.filterTownByID(locationInput)
+        let showTown = await regFunc.townDisplay()
+
+        res.render('index', { display, locationInput, showTown })
+      }
+
+    } catch (error) {
+      next(error.stack)
+    }
+  }
   return {
     home,
     regCheckRoute,
-    locationAdd
+    locationAdd,
+    filterReg
   }
 }

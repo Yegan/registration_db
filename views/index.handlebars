@@ -20,16 +20,18 @@
 <div class="error">
        <span class="error">{{messages.error}}</span>
       </div>
+{{!-- <form method='get' action="/filter/{{locationInput}}"> --}}
  <div class="row">
     <div class="col-xs-6">
-      <select class="towns btn" name="">
-      
-         <option class="towns" value="all">All</option>
+      <select onchange='filterBy(this)' class="towns btn" name="towns">
+        <option name="towns" value="all">All</option>
         {{#each showTown}}
-        <option class="towns" value="{{area}}">{{loca}}</option>
+        <option name="towns" value="{{area}}">{{loca}}</option>
        {{/each}}
       </select>
     </div>
+{{!-- </form> --}}
+
     
     <form action="/location" method="post">
    <input type="text" name="location" class="form-control mr-sm-6" placeholder="Please Enter A Location" aria-label="Recipient's username"  aria-describedby="basic-addon2">
@@ -80,6 +82,11 @@
     </div>
   </div>
 </div>
-
+  <script type="text/javascript">
+    function filterBy(elem){
+      var  tag = elem.value
+      location.href = '/filter/' + tag
+    }
+  </script>
 </body>
 </html>
