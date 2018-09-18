@@ -31,9 +31,13 @@ module.exports = function (regFunc) {
     try {
       let townInput = req.body.location
       let locationCode = req.body.townInput2
-      let errorMessage = await regFunc.addTown(townInput, locationCode)
-      if (errorMessage !== undefined || errorMessage !== '') {
+
+      console.log('townInput: ' + townInput + ' locationCode: ' + locationCode )
+
+      if (townInput === undefined || locationCode === undefined || townInput === '' || locationCode === '') {
         req.flash('error', 'Please fill in a location and a registration code')
+      } else {
+        await regFunc.addTown(townInput, locationCode)
       }
       res.redirect('/')
     } catch (error) {
