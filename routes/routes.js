@@ -42,7 +42,7 @@ module.exports = function (regFunc) {
     }
   }
   // filters all the registration numbers according the location/area selected from the dropdown menu
-  async function filterReg(req, res, next) {
+  async function filterReg (req, res, next) {
     try {
       let locationInput = req.params.tag
 
@@ -54,15 +54,35 @@ module.exports = function (regFunc) {
 
         res.render('index', { display, locationInput, showTown })
       }
-
     } catch (error) {
       next(error.stack)
     }
   }
+
+  async function resetReg (req, res, next) {
+    try {
+      let tableReset = await regFunc.deleteFromRegistration()
+      res.redirect('/')
+    } catch (error) {
+      next(error.stack)
+    }
+  }
+
+  async function resetTown (req, res, next) {
+    try {
+      let townReset = await regFunc.deleteFromTown()
+      res.redirect('/')
+    } catch (error) {
+      next(error.stack)
+    }
+  }
+
   return {
     home,
     regCheckRoute,
     locationAdd,
-    filterReg
+    filterReg,
+    resetReg,
+    resetTown
   }
 }

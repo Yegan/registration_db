@@ -50,6 +50,8 @@ app.get('/', regRoute.home)
 app.post('/reg_number', regRoute.regCheckRoute)
 app.post('/location', regRoute.locationAdd)
 app.get('/filter/:tag', regRoute.filterReg)
+app.get('/resetReg', regRoute.resetReg)
+app.get('/resetTable', regRoute.resetTown)
 
 let PORT = process.env.PORT || 3020
 

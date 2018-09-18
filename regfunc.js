@@ -8,7 +8,7 @@ module.exports = function (pool) {
       return {
         success: true
       }
-    }  
+    }
     return {
       success: false,
       startsWith: regSubString
@@ -42,7 +42,6 @@ module.exports = function (pool) {
 
     // for loop goes here
     let regCode = await pool.query('select * from registration_table where code_id =$1', [townsCode.rows[0].id])
-    console.log(regCode.rows)
     return regCode.rows
   }
 
@@ -56,7 +55,14 @@ module.exports = function (pool) {
       await pool.query('insert into towns_table(loca, area) values($1, $2)', [reg.townName, reg.townTag])
     }
   }
-
+  async function deleteFromRegistration () {
+    let reset = await pool.query('delete from registration_table')
+    return reset
+  }
+  async function deleteFromTown () {
+    let resetTown = await pool.query('delete from towns_table')
+    return resetTown
+  }
   return {
     addReg,
     regDisplay,
@@ -64,7 +70,9 @@ module.exports = function (pool) {
     townDisplay,
     displayOfTownsTable,
     filterTownByID,
-    populateDropDown
+    populateDropDown,
+    deleteFromRegistration,
+    deleteFromTown
 
   }
 }

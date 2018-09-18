@@ -37,7 +37,9 @@
    <input type="text" name="location" class="form-control mr-sm-6" placeholder="Please Enter A Location" aria-label="Recipient's username"  aria-describedby="basic-addon2">
    <input type="text" name="townInput2" class="code form-control mr-sm-6" placeholder="Enter A Reg code" aria-label="Recipient's username"  aria-describedby="basic-addon2">
    <button class="btn btn-outline-secondary" type="submit">Add</button>
-   <button class="btn btn-sm btn-outline-secondary" type="button">Reset</button>
+   </form>
+   <form action="/resetTable" method="get">
+   <button class="btn btn-sm btn-outline-secondary" type="submit">Reset</button>
     </form>
 
   </div>
@@ -50,8 +52,9 @@
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="submit">Add</button>
       </form> 
-
-            <button class="btn btn-sm btn-outline-secondary" type="button">Reset</button>
+             <form action="/resetReg" method="get">
+            <button class="btn btn-sm btn-outline-secondary" type="submit">Reset</button>
+            </form> 
           </div>
         </div>
       </div>
