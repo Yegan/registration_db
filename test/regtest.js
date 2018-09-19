@@ -13,6 +13,8 @@ const pool = new Pool({
 describe('Registration Web App', function () {
   beforeEach(async function () {
     await pool.query('delete from registration_table')
+    await pool.query('delete from towns_table')
+
     await pool.query('insert into towns_table(loca, area) values($1,$2)', ['Cape Town', 'CA'])
     await pool.query('insert into towns_table(loca, area) values($1,$2)', ['Belville', 'CY'])
   })
