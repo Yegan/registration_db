@@ -4,13 +4,17 @@ module.exports = function (pool) {
     let regSubString = regNum.substring(0, 3).trim()
     let townId = await pool.query('select id from towns_table where area =$1', [regSubString])
     let allReg = await pool.query('select * from registration_table where regcode =$1', [regNum])
-    // console.log(townId.rows)
-    if (allReg.rowCount === 0) {
-      // if (townId.rows > 0) {
-
-      await pool.query('insert into registration_table(regcode, code_id) values ($1, $2)', [regNum, townId.rows[0].id])
+    if (townId.rowCount > 0) {
+      if (allReg.rowCount === 0) {
+        // if (townId.rows > 0) {
+        await pool.query('insert into registration_table(regcode, code_id) values ($1, $2)', [regNum, townId.rows[0].id])
+        return {
+          success: true
+        }
+      }
       return {
-        success: true
+        success: false,
+        startsWith: regSubString
       }
     }
     return {
@@ -36,7 +40,13 @@ module.exports = function (pool) {
   // the addTown function inserts a location and area into the towns table i.e loca = Cape Town area = CA
   async function addTown (regCode, area) {
     area = area.toUpperCase()
+
+    let foundTown = await pool.query(`select * from towns_table where loca='${regCode}'`)
+    if (foundTown.rowCount > 0) {
+      return false
+    }
     await pool.query('insert into towns_table(loca, area) values($1, $2)', [regCode, area])
+    return true
   }
 
   // the townDisplay function retrives all entries in the towns_table
@@ -51,6 +61,12 @@ module.exports = function (pool) {
   }
   // the filterTownByID function filters towns by the id of towns_table and references it in the registration_table i.e ID = 1 loca = Cape Town area = CA || code_id = 1 regcode = CA 123-456
   async function filterTownByID (town) {
+    console.log(town)
+
+    if (town === 'all') {
+      let all = await regDisplay()
+      return all
+    }
     // substring
     let townsCode = await pool.query('select id from towns_table where area =$1', [town])
 

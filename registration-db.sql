@@ -2,7 +2,7 @@ drop table if exists towns_table, registration_table cascade;
 
 create table towns_table(
     id serial not null primary key,
-    loca text not null,
+    loca text not null unique,
     area text not null
 );
 

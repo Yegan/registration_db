@@ -38,7 +38,13 @@ module.exports = function (regFunc) {
       if (townInput === undefined || locationCode === undefined || townInput === '' || locationCode === '') {
         req.flash('error', 'Please fill in a location and a registration code')
       } else {
-        await regFunc.addTown(townInput, locationCode)
+        let found = await regFunc.addTown(townInput, locationCode)
+
+        if (found) {
+          req.flash('error', 'Successfully added')
+        } else {
+          req.flash('error', 'This registration code and location already exists')
+        }
       }
       res.redirect('/')
     } catch (error) {
@@ -50,14 +56,14 @@ module.exports = function (regFunc) {
     try {
       let locationInput = req.params.tag
 
-      if (locationInput === 'all') {
-        res.redirect('/')
-      } else {
-        let display = await regFunc.filterTownByID(locationInput)
-        let showTown = await regFunc.townDisplay()
+      // if (locationInput === 'all') {
+      //   res.redirect('/')
+      // } else {
+      let display = await regFunc.filterTownByID(locationInput)
+      let showTown = await regFunc.townDisplay()
 
-        res.render('index', { display, locationInput, showTown })
-      }
+      res.render('index', { display, locationInput, showTown })
+      // }
     } catch (error) {
       next(error.stack)
     }

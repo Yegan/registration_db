@@ -24,6 +24,7 @@
  <div class="row">
     <div class="col-xs-6">
       <select onchange='filterBy(this)' class="towns btn" name="towns">
+         <option name="towns" value="">select town</option>
         <option name="towns" value="all">All</option>
         {{#each showTown}}
         <option name="towns" value="{{area}}">{{loca}}</option>
