@@ -16,6 +16,7 @@ module.exports = function (regFunc) {
   async function regCheckRoute (req, res, next) {
     try {
       let regInput = req.body.regInput
+      regInput = regInput.toUpperCase()
       let status = await regFunc.addReg(regInput)
       if (!status.success) {
         req.flash('message', `Please add a town and a registration code that starts with ${status.startsWith} for that corresponding town`)

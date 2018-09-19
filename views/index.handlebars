@@ -20,7 +20,7 @@
 <div class="error">
        <span class="error">{{messages.error}}</span>
       </div>
-{{!-- <form method='get' action="/filter/{{locationInput}}"> --}}
+      <br>
  <div class="row">
     <div class="col-xs-6">
       <select onchange='filterBy(this)' class="towns btn" name="towns">
@@ -30,7 +30,6 @@
        {{/each}}
       </select>
     </div>
-{{!-- </form> --}}
 
     
     <form action="/location" method="post">
@@ -66,6 +65,7 @@
   <div class="message">
        <span class="message">{{messages.message}}</span>
       </div>
+      <br>
     <div class="row">
       <div class="col-sm-12">
         <div class="col-xs-12">

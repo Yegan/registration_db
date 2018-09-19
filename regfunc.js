@@ -22,6 +22,7 @@ module.exports = function (pool) {
   }
   // the addTown function inserts a location and area into the towns table i.e loca = Cape Town area = CA
   async function addTown (regCode, area) {
+    area = area.toUpperCase()
     await pool.query('insert into towns_table(loca, area) values($1, $2)', [regCode, area])
   }
 
