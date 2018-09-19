@@ -56,12 +56,10 @@ module.exports = function (pool) {
     }
   }
   async function deleteFromRegistration () {
-    let reset = await pool.query('delete from registration_table')
-    return reset
+    await pool.query('delete from registration_table')
   }
   async function deleteFromTown () {
-    let resetTown = await pool.query('delete from towns_table')
-    return resetTown
+    await pool.query('delete from towns_table')
   }
   return {
     addReg,

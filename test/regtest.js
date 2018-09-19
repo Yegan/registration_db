@@ -49,7 +49,7 @@ describe('Registration Web App', function () {
     let reg = await regFuncIn.filterTownByID('CA')
     let regList = []
 
-    for (let currentRow of reg.rows) {
+    for (let currentRow of reg) {
       regList.push(currentRow.regcode)
     }
 
@@ -71,6 +71,16 @@ describe('Registration Web App', function () {
 
     assert.deepEqual(regList, ['CA 123-456', 'CY 123-456'])
   })
+
+  it('The delete button when clicked should delete all entries from the database', async function () {
+    let regFuncIn = regFunc(pool)
+    await regFuncIn.addReg('CA 123-456')
+    await regFuncIn.addReg('CY 123-456')
+    await regFuncIn.deleteFromRegistration()
+    let display = await regFuncIn.regDisplay()
+    assert.deepEqual(display, [])
+  })
+
   after(async function () {
     await pool.end()
   })

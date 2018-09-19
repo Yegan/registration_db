@@ -19,6 +19,8 @@ module.exports = function (regFunc) {
       let status = await regFunc.addReg(regInput)
       if (!status.success) {
         req.flash('message', `Please add a town and a registration code that starts with ${status.startsWith} for that corresponding town`)
+      } else {
+        req.flash('message', `Your registration number for that corresponding town has been added`)
       }
       res.redirect('/')
     } catch (error) {
