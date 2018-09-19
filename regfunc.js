@@ -3,7 +3,11 @@ module.exports = function (pool) {
   async function addReg (regNum) {
     let regSubString = regNum.substring(0, 3).trim()
     let townId = await pool.query('select id from towns_table where area =$1', [regSubString])
-    if (townId.rows.length > 0) {
+    let allReg = await pool.query('select * from registration_table where regcode =$1', [regNum])
+    // console.log(townId.rows)
+    if (allReg.rowCount === 0) {
+      // if (townId.rows > 0) {
+
       await pool.query('insert into registration_table(regcode, code_id) values ($1, $2)', [regNum, townId.rows[0].id])
       return {
         success: true
@@ -13,6 +17,15 @@ module.exports = function (pool) {
       success: false,
       startsWith: regSubString
     }
+  }
+
+  async function dupli () {
+    let map = await regDisplay()
+    let duplicate = []
+    for (const current of map) {
+      duplicate.push(current.regcode)
+    }
+    return duplicate
   }
 
   // checking the reg table for the insert of the reg num
@@ -71,7 +84,8 @@ module.exports = function (pool) {
     filterTownByID,
     populateDropDown,
     deleteFromRegistration,
-    deleteFromTown
+    deleteFromTown,
+    dupli
 
   }
 }

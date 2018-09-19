@@ -21,7 +21,7 @@ describe('Registration Web App', function () {
     let regFuncIn = regFunc(pool)
 
     await regFuncIn.addReg('CA 123-456')
-    // await regFuncIn.addReg('CY 123-987')
+    await regFuncIn.addReg('CA 123-456')
     let display = await regFuncIn.regDisplay()
     //  looping through a list to get the registration
 
