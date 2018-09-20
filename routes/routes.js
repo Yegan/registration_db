@@ -1,11 +1,11 @@
-module.exports = function (regFunc) {
+module.exports = function (RegFunc) {
   // this function renders the home page
   async function home (req, res, next) {
     try {
-      await regFunc.regDisplay()
-      await regFunc.displayOfTownsTable()
-      let display = await regFunc.regDisplay()
-      let showTown = await regFunc.townDisplay()
+      await RegFunc.regDisplay()
+      await RegFunc.displayOfTownsTable()
+      let display = await RegFunc.regDisplay()
+      let showTown = await RegFunc.townDisplay()
 
       res.render('index', { display, showTown })
     } catch (error) {
@@ -17,9 +17,9 @@ module.exports = function (regFunc) {
     try {
       let regInput = req.body.regInput
       regInput = regInput.toUpperCase()
-      let status = await regFunc.addReg(regInput)
+      let status = await RegFunc.addReg(regInput)
       if (!status.success) {
-        let map = await regFunc.dupli()
+        let map = await RegFunc.dupli()
         map.indexOf(regInput) > -1 ? req.flash('message', `This registration number has already been added`) : req.flash('message', `Please add a town and a registration code that starts with ${status.startsWith} for that corresponding town`)
       } else if (status.success) {
         req.flash('message', `Your registration number for that corresponding town has been added`)
@@ -38,7 +38,7 @@ module.exports = function (regFunc) {
       if (townInput === undefined || locationCode === undefined || townInput === '' || locationCode === '') {
         req.flash('error', 'Please fill in a location and a registration code')
       } else {
-        let found = await regFunc.addTown(townInput, locationCode)
+        let found = await RegFunc.addTown(townInput, locationCode)
 
         if (found) {
           req.flash('error', 'Successfully added')
@@ -59,8 +59,8 @@ module.exports = function (regFunc) {
       // if (locationInput === 'all') {
       //   res.redirect('/')
       // } else {
-      let display = await regFunc.filterTownByID(locationInput)
-      let showTown = await regFunc.townDisplay()
+      let display = await RegFunc.filterTownByID(locationInput)
+      let showTown = await RegFunc.townDisplay()
 
       res.render('index', { display, locationInput, showTown })
       // }
@@ -71,7 +71,7 @@ module.exports = function (regFunc) {
 
   async function resetReg (req, res, next) {
     try {
-      let tableReset = await regFunc.deleteFromRegistration()
+      let tableReset = await RegFunc.deleteFromRegistration()
       res.redirect('/')
     } catch (error) {
       next(error.stack)
@@ -80,7 +80,7 @@ module.exports = function (regFunc) {
 
   async function resetTown (req, res, next) {
     try {
-      let townReset = await regFunc.deleteFromTown()
+      let townReset = await RegFunc.deleteFromTown()
       res.redirect('/')
     } catch (error) {
       next(error.stack)
