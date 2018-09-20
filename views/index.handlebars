@@ -14,15 +14,21 @@
   <div class="container">
     <div class="registration-header">
       <h1>Registration Number App </h1>
+      
 <br>
+
 <br>
+
+<h4>Enter a town along with the towns registration code</h4>
+
+
 {{!--the text input for town and regcodes  --}}
 <div class="error">
        <span class="error">{{messages.error}}</span>
       </div>
       <br>
  <div class="row">
-    <div class="col-xs-6">
+   <div class="col-md-4 offset-md-4">
       <select onchange='filterBy(this)' class="towns btn" name="towns">
          <option name="towns" value="">select town</option>
         <option name="towns" value="all">All</option>
@@ -30,18 +36,19 @@
         <option name="towns" value="{{area}}">{{loca}}</option>
        {{/each}}
       </select>
-    </div>
+<br>
+<br>
 
     
     <form action="/location" method="post">
    <input type="text" name="location" class="form-control mr-sm-6" placeholder="Please Enter A Location" aria-label="Recipient's username"  aria-describedby="basic-addon2">
    <input type="text" name="townInput2" class="code form-control mr-sm-6" placeholder="Enter A Reg code" aria-label="Recipient's username"  aria-describedby="basic-addon2">
-   <button class="btn btn-outline-secondary" type="submit">Add</button>
+   <button class="btn btn-primary" type="submit">Add</button>
    </form>
    <form action="/resetTable" method="get">
-   <button class="btn btn-sm btn-outline-secondary" type="submit">Reset</button>
+   <button class="btn btn-primary" type="submit">Reset</button>
     </form>
-
+    </div>
   </div>
   <br>
 {{!-- The regNumber text input --}}
@@ -50,10 +57,10 @@
         <div class="input-group col-xs-6 col-lg-offset-2">
           <input type="text" name="regInput" class="reg form-control mr-sm-6" placeholder="Please Enter A Registartion Number" aria-label="Recipient's username"  aria-describedby="basic-addon2">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="submit">Add</button>
+            <button class="btn btn-secondary" type="submit">Add</button>
       </form> 
              <form action="/resetReg" method="get">
-            <button class="btn btn-sm btn-outline-secondary" type="submit">Reset</button>
+            <button class="btn btn-secondary" type="submit">Reset</button>
             </form> 
           </div>
         </div>
