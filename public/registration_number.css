@@ -1,20 +1,32 @@
+
+/* This is the CSS structure and styling for the form and input of the location and regcode */
+.form-control{
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+
+}
+
 .container{
   text-align: center;
   margin: auto;
   box-sizing: content-box;
   
 }
-.displayText{
-  height: 1em;
+li{
+  height: 2.5em;
   text-align: center;
   padding-left: 1em;
   padding-right: 1em;
   padding-top: 5px;
   padding-bottom: 5px;
   background-color: yellow;
-  width: 10%;
+  width: auto;
   border-radius: 10%;
   border: solid black 2px;
+  list-style-type: none;
+  font-weight: bold;
+  display: inline-block;
 }
 .reg{
   text-transform: uppercase;
@@ -44,3 +56,11 @@
 button{
   width: 60px;
 }
+#modal-btn{
+  width: auto;
+}
+
+#modal-save{
+  width: auto;
+}
+
