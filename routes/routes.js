@@ -22,7 +22,7 @@ module.exports = function (RegFunc) {
         let map = await RegFunc.dupli()
         map.indexOf(regInput) > -1 ? req.flash('message', `This registration number has already been added`) : req.flash('message', `Please add a town and a registration code that starts with ${status.startsWith} for that corresponding town`)
       } else if (status.success) {
-        req.flash('message', `Your registration number for that corresponding town has been added`)
+        req.flash('successful', `Your registration number for that corresponding town has been added`)
       }
       res.redirect('/')
     } catch (error) {
@@ -41,7 +41,7 @@ module.exports = function (RegFunc) {
         let found = await RegFunc.addTown(townInput, locationCode)
 
         if (found) {
-          req.flash('error', 'Successfully added')
+          req.flash('successfully', 'Successfully added')
         } else {
           req.flash('error', 'This registration code and location already exists')
         }
@@ -81,8 +81,11 @@ module.exports = function (RegFunc) {
   async function resetTown (req, res, next) {
     try {
       let townReset = await RegFunc.deleteFromTown()
+      req.flash('successful', 'Successfully deleted')
       res.redirect('/')
     } catch (error) {
+      req.flash('error', 'Please reset the registration number plates before attempting to reset')
+      res.redirect('/')
       next(error.stack)
     }
   }

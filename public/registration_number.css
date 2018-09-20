@@ -26,8 +26,21 @@
 
 .message{
   font-weight: bold;
+  color: red;
 }
 
 .error{
   font-weight: bold;
+  color: red;
+}
+.successful{
+  font-weight: bold;
+  color: green;
+}
+.successfully{
+  font-weight: bold;
+  color: green;
+}
+button{
+  width: 60px;
 }
