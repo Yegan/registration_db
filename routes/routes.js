@@ -69,18 +69,9 @@ module.exports = function (RegFunc) {
     }
   }
 
-  async function resetReg (req, res, next) {
+  async function resetAll (req, res, next) {
     try {
-      let tableReset = await RegFunc.deleteFromRegistration()
-      res.redirect('/')
-    } catch (error) {
-      next(error.stack)
-    }
-  }
-
-  async function resetTown (req, res, next) {
-    try {
-      let townReset = await RegFunc.deleteFromTown()
+      let townReset = await RegFunc.deleteEverything()
       req.flash('successful', 'Successfully deleted')
       res.redirect('/')
     } catch (error) {
@@ -95,7 +86,6 @@ module.exports = function (RegFunc) {
     regCheckRoute,
     locationAdd,
     filterReg,
-    resetReg,
-    resetTown
+    resetAll
   }
 }

@@ -85,12 +85,11 @@ module.exports = function (pool) {
       await pool.query('insert into towns_table(loca, area) values($1, $2)', [reg.townName, reg.townTag])
     }
   }
-  async function deleteFromRegistration () {
+  async function deleteEverything () {
     await pool.query('delete from registration_table')
-  }
-  async function deleteFromTown () {
     await pool.query('delete from towns_table')
   }
+
   return {
     addReg,
     regDisplay,
@@ -99,8 +98,7 @@ module.exports = function (pool) {
     displayOfTownsTable,
     filterTownByID,
     populateDropDown,
-    deleteFromRegistration,
-    deleteFromTown,
+    deleteEverything,
     dupli
 
   }
