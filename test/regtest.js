@@ -78,7 +78,7 @@ describe('Registration Web App', function () {
     let regFuncIn = regFunc(pool)
     await regFuncIn.addReg('CA 123-456')
     await regFuncIn.addReg('CY 123-456')
-    await regFuncIn.deleteFromRegistration()
+    await regFuncIn.deleteEverything()
     let display = await regFuncIn.regDisplay()
     assert.deepEqual(display, [])
   })
