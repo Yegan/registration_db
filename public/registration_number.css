@@ -22,7 +22,7 @@ li{
   padding-bottom: 5px;
   background-color: yellow;
   width: auto;
-  border-radius: 10%;
+  border-radius: 0.25em;
   border: solid black 2px;
   list-style-type: none;
   font-weight: bold;
@@ -67,3 +67,13 @@ button{
   padding-left: 50px; 
 }
 
+.towns-btn{
+  margin-bottom: 10px;
+  padding-top: 10px;
+}
+.registration-heading{
+  padding-right: 190px;
+}
+.modal{
+  padding-left: 300px;
+}

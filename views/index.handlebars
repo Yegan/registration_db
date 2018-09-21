@@ -124,7 +124,7 @@
 
       <div class="row">
         <div class="col-md-12">
-          <select onchange='filterBy(this)' class="towns btn" name="towns">
+          <select onchange='filterBy(this)' class="towns-btn" name="towns">
             <option name="towns" value="">select town</option>
             <option name="towns" value="all">All</option>
             {{#each showTown}}
@@ -138,20 +138,12 @@
         
           
       </div>
-{{!-- 
-      <div class="form-group row">
-        <div class="col-md-12">
-          <form action="/resetTable" method="get">
-            <button class="btn btn-primary" type="submit">Reset</button>
-          </form>
-        </div>
-      </div> --}}
 
 
 
       {{!-- The regNumber text input --}}
       <div class="form-group row">
-        <div class="col-md-12">
+        <div class="col-md-6 offset-md-2">
           <form action="/reg_number" method="post">
             <input type="text" name="regInput" class="reg form-control mr-sm-6" placeholder="Please Enter A Registartion Number"
               aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -163,7 +155,7 @@
 
 
 
-      <h4>Registration number plates</h4>
+      <h4 class="registration-heading">Registration number plates</h4>
 
 
       <div class="row">
