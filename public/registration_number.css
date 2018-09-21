@@ -12,6 +12,8 @@
   margin: auto;
   box-sizing: content-box;
   display: block;
+  margin-left: -60px;
+  margin-top: 20px;
 }
 li{
   height: 2.5em;

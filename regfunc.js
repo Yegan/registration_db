@@ -61,7 +61,6 @@ module.exports = function (pool) {
   }
   // the filterTownByID function filters towns by the id of towns_table and references it in the registration_table i.e ID = 1 loca = Cape Town area = CA || code_id = 1 regcode = CA 123-456
   async function filterTownByID (town) {
-    console.log(town)
 
     if (town === 'all') {
       let all = await regDisplay()
