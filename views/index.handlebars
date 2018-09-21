@@ -21,82 +21,84 @@
     <!-- Button trigger modal -->
 
     <div class="margingAdd" style="float:right;">
-<button type="button" class="btn btn-success" data-toggle="modal" id="modal-btn" data-target="#exampleModal">
-  Add Town
-</button>
+      <button type="button" class="btn btn-success" data-toggle="modal" id="modal-btn" data-target="#exampleModal">
+        Add Town
+      </button>
     </div>
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add a town</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <form action="/location" method="post" class="">
-            <div class="form-group row">
-              <label for="location" class="col-sm-6">Location</label>
-              <input type="text" name="location" class="form-control col-sm-6" placeholder="Please Enter A Location"
-                aria-label="Recipient's username" aria-describedby="basic-addon2">
-            </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add a town</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/location" method="post" class="">
+              <div class="form-group row">
+                <label for="location" class="col-sm-6">Location</label>
+                <input type="text" name="location" class="form-control col-sm-6" placeholder="Please Enter A Location"
+                  aria-label="Recipient's username" aria-describedby="basic-addon2">
+              </div>
 
-            <div class="form-group row">
-              <label for="townInput2" class="col-sm-6">Registration code</label>
-              <input type="text" name="townInput2" class="form-control col-sm-6" placeholder="Enter A Reg code"
-                aria-label="Recipient's username" aria-describedby="basic-addon2">
-            </div>
+              <div class="form-group row">
+                <label for="townInput2" class="col-sm-6">Registration code</label>
+                <input type="text" name="townInput2" class="form-control col-sm-6" placeholder="Enter A Reg code"
+                  aria-label="Recipient's username" aria-describedby="basic-addon2">
+              </div>
 
-            <button class="btn btn-success" type="submit">Add</button>
-          </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        {{!-- <button type="button" class="btn btn-primary" id="modal-save">Save changes</button> --}}
-      </div>
-    </div>
-  </div>
-</div>
-
-
- <div class="margingAdd" style="float:right;">
-<button type="button" class="btn btn-danger" data-toggle="modal" id="modal-btn" data-target="#exampleModals">
-  Reset
-</button>
-    </div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Reset</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-           <form action="/resetReg" method="get">
-           <div class="row">
-        <p class="resetInfo">Are you sure that you would like to reset everything?</p>
+              <button class="btn btn-success" type="submit">Add</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            {{!-- <button type="button" class="btn btn-primary" id="modal-save">Save changes</button> --}}
+          </div>
         </div>
-            <button class="btn btn-danger " type="submit">Reset</button>
-          </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        {{!-- <button type="button" class="btn btn-primary" id="modal-save">Save changes</button> --}}
       </div>
     </div>
-  </div>
-</div>
 
 
-    <div class="registration-header">
+    <div class="margingAdd" style="float:right;">
+      <button type="button" class="btn btn-danger" data-toggle="modal" id="modal-btn" data-target="#exampleModals">
+        Reset
+      </button>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModals" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Reset</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="/resetReg" method="get">
+              <div class="row">
+                <p class="resetInfo">Are you sure that you would like to reset everything?</p>
+              </div>
+              <button class="btn btn-danger " type="submit">Reset</button>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            {{!-- <button type="button" class="btn btn-primary" id="modal-save">Save changes</button> --}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div style='margin-left: 150px' class="registration-header">
       <h1>Registration Number App </h1>
 
       <h5>Enter a town along with the towns registration code</h5>
@@ -122,53 +124,59 @@
       </div>
 
 
-      <div class="row">
-        <div class="col-md-12">
-          <select onchange='filterBy(this)' class="towns-btn" name="towns">
-            <option name="towns" value="">select town</option>
-            <option name="towns" value="all">All</option>
-            {{#each showTown}}
-            <option name="towns" value="{{area}}">{{loca}}</option>
-            {{/each}}
-          </select>
-        </div>
-      </div>
 
-      <div class="row">
-        
-          
-      </div>
+
+
 
 
 
       {{!-- The regNumber text input --}}
-      <div class="form-group row">
-        <div class="col-md-6 offset-md-2">
-          <form action="/reg_number" method="post">
-            <input type="text" name="regInput" class="reg form-control mr-sm-6" placeholder="Please Enter A Registartion Number"
-              aria-label="Recipient's username" aria-describedby="basic-addon2">
-            <button class=" margingAdd btn btn-primary" type="submit">Add</button>
-          </form>
-         
-        </div>
+      <div   class="input-select row offset-md-2">
+
+        <form action="/reg_number" method="post" class="">
+          <div class="form-group row mx-auto">
+
+            <div class="col-md-6">
+
+              <input style='margin-right:150px'type="text" name="regInput" class="reg form-control" placeholder="Please Enter A Registartion Number"
+                aria-label="Recipient's username" aria-describedby="basic-addon2">
+            </div>
+
+            <div class="col-md-5">
+              <select onchange='filterBy(this)' class="towns-btn form-control" name="towns">
+                <option name="towns" value="">select town</option>
+                <option name="towns" value="all">All</option>
+                {{#each showTown}}
+                <option name="towns" value="{{area}}">{{loca}}</option>
+                {{/each}}
+              </select>
+            </div>
+              <div class="center">
+                  <button class="margingAdd btn btn-primary" type="submit">Add</button>
+              </div>
+            
+          </div>
+        </form>
       </div>
 
 
 
-      <h4 class="registration-heading">Registration number plates</h4>
+    </div>
+
+    <h4 class="registration-heading">Registration number plates</h4>
 
 
-      <div class="row">
-        <div class="col-sm-12">
-          {{!-- display is the result rendered from regCheckRoute, regcode is the column in the table with the rows
-          --}}
-          {{#each display}}
-          <li class="displayText">{{regcode}}</li>
-          {{/each}}
+    <div class="row">
+      <div class="col-sm-12">
+        {{!-- display is the result rendered from regCheckRoute, regcode is the column in the table with the rows
+        --}}
+        {{#each display}}
+        <li class="displayText">{{regcode}}</li>
+        {{/each}}
 
-        </div>
       </div>
     </div>
+  </div>
   </div>
 
   <script type="text/javascript">

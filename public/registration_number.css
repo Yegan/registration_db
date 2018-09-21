@@ -11,7 +11,7 @@
   text-align: center;
   margin: auto;
   box-sizing: content-box;
-  
+  display: block;
 }
 li{
   height: 2.5em;
@@ -29,11 +29,9 @@ li{
   display: inline-block;
 }
 .reg{
-  text-transform: uppercase;
 }
 
 .code{
-  text-transform: uppercase;
 }
 
 .message{
@@ -72,7 +70,15 @@ button{
   padding-top: 10px;
 }
 .registration-heading{
-  padding-right: 190px;
+text-align: center;
 }
-#modal-btn{
+
+.registration-header{
+  text-align: center;
+  padding-left:0px; 
+}
+
+.center{
+  margin: auto;
+  display: block;
 }
